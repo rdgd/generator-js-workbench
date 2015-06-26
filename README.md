@@ -19,6 +19,7 @@ The default [Grunt](http://gruntjs.com) command will do all the mentioned above 
 If you want to change your project structure, you will need to adjust the Gruntfile.js accordingly to sync-up dir paths.
 
 The Grunt Plugins I leverage are:
+
 1. [Contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
 2. [Contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
 3. [Contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
