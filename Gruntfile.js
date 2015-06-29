@@ -93,7 +93,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-notify');
-  grunt.registerTask('default', ['jshint', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'jscs', 'compass', 'uglify']);
   grunt.registerTask('scripts', 'watch:scripts');
   grunt.registerTask('sass', 'watch:sass');
 };
