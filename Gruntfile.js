@@ -25,43 +25,7 @@ module.exports = function(grunt) {
       options: {
         esnext: false, // If you use ES6 http://jscs.info/overview.html#esnext
         verbose: true, // If you need output with rule names http://jscs.info/overview.html#verbose
-        "disallowKeywordsOnNewLine": ["else"],
-        "disallowMixedSpacesAndTabs": true,
-        "disallowMultipleVarDecl": "exceptUndefined",
-        "disallowNewlineBeforeBlockStatements": true,
-        "disallowSpaceAfterObjectKeys": true,
-        "disallowSpaceAfterPrefixUnaryOperators": true,
-        "disallowTrailingWhitespace": true,
-        "maximumLineLength": 120,
-        "requireCapitalizedComments": true,
-        "requireCapitalizedConstructors": true,
-        "requireCurlyBraces": true,
-        "requireSpaceAfterKeywords": [
-          "if",
-          "else",
-          "for",
-          "while",
-          "do",
-          "switch",
-          "case",
-          "return",
-          "try",
-          "catch",
-          "typeof"
-        ],
-        "requireSpaceAfterLineComment": true,
-        "requireSpaceAfterBinaryOperators": true,
-        "requireSpaceBeforeBinaryOperators": true,
-        "requireSpaceBeforeBlockStatements": true,
-        "requireSpaceBeforeObjectValues": true,
-        "requireSpacesInFunction": {
-          "beforeOpeningCurlyBrace": true
-        },
-       "requireSpacesInForStatement": true,
-       "requireSpacesInsideObjectBrackets": "all",
-       "validateIndentation": 2,
-       "validateLineBreaks": "LF",
-       "validateQuoteMarks": "'"
+        config: 'node_modules/jscs/jscs.json'
       }
     },  
     watch: {
