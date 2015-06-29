@@ -3,97 +3,65 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: ['Gruntfile.js', 'assets/js/*.js', 'assets/**/**/*.js'],
+      files: ['Gruntfile.js', 'dev/js/**/*.js'],
       options: {
         globals: {
           jQuery: true
         }
       }
     },
-    uglify: {
-      my_target: {
-        files: [{
-          expand: true,
-          cwd: 'assets/js',
-          src: '**/*.js',
-          dest: 'build/<%= grunt.template.today("mm-dd-yyyy_h:MM:ss") %>/assets/js'
-        }]
-      }
-    },
     jscs: {
-      src: "assets/**/*.js",
+      src: "dev/**/*.js",
       options: {
         esnext: false, // If you use ES6 http://jscs.info/overview.html#esnext
         verbose: true, // If you need output with rule names http://jscs.info/overview.html#verbose
-        "disallowKeywordsOnNewLine": ["else"],
-        "disallowMixedSpacesAndTabs": true,
-        "disallowMultipleVarDecl": "exceptUndefined",
-        "disallowNewlineBeforeBlockStatements": true,
-        "disallowSpaceAfterObjectKeys": true,
-        "disallowSpaceAfterPrefixUnaryOperators": true,
-        "disallowTrailingWhitespace": true,
-        "maximumLineLength": 120,
-        "requireCapitalizedComments": true,
-        "requireCapitalizedConstructors": true,
-        "requireCurlyBraces": true,
-        "requireSpaceAfterKeywords": [
-          "if",
-          "else",
-          "for",
-          "while",
-          "do",
-          "switch",
-          "case",
-          "return",
-          "try",
-          "catch",
-          "typeof"
-        ],
-        "requireSpaceAfterLineComment": true,
-        "requireSpaceAfterBinaryOperators": true,
-        "requireSpaceBeforeBinaryOperators": true,
-        "requireSpaceBeforeBlockStatements": true,
-        "requireSpaceBeforeObjectValues": true,
-        "requireSpacesInFunction": {
-          "beforeOpeningCurlyBrace": true
-        },
-       "requireSpacesInForStatement": true,
-       "requireSpacesInsideObjectBrackets": "all",
-       "validateIndentation": 2,
-       "validateLineBreaks": "LF",
-       "validateQuoteMarks": "'"
+        config: 'node_modules/jscs/jscs.json'
       }
-    },  
+    },
+    uglify: {
+      options: {
+        screwIE8: true,
+        preserveComments: false
+      },
+      all: {
+        files: [{
+          expand: true,
+          cwd: 'dev/js',
+          src: '**/*.js',
+          dest: 'assets/js'
+        }]
+      }
+    },
     watch: {
       scripts: {
-        files: ['assets/**/*.js'],
-        tasks: ['jshint', 'jscs'],
+        files: ['dev/**/*.js'],
+        tasks: ['jshint', 'jscs', 'uglify:all'],
         options: {
           spawn: false,
         }
       },
       sass: {
-        files: ['assets/css/sass/particles/*.scss'],
+        files: ['dev/css/sass/*.scss', 'dev/css/sass/**/*.scss'],
         tasks: ['compass']
       }
     },
     compass: {                  // Task
       dist: {                   // Target
         options: {              // Target options
-          config: 'assets/css/config.rb',
+          config: 'dev/css/config.rb',
           environment: 'production'
         } 
       }
     }
-});
-  
+  });
+
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-notify');
-  grunt.registerTask('default', ['jshint', 'jscs', 'compass', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'jscs', 'uglify:all','compass']);
   grunt.registerTask('scripts', 'watch:scripts');
   grunt.registerTask('sass', 'watch:sass');
 };
