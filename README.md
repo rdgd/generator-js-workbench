@@ -10,10 +10,10 @@ The default [Grunt](http://gruntjs.com) command will do all the mentioned above 
 2. [RubyGems (the Ruby package manager)](https://rubygems.org/pages/download)
 3. [Compass](http://compass-style.org/install/)
 
-##Recommended
-Install grunt and grunt-cli globally:
-`npm install -g grunt`
-`npm install -g grunt-cli`
+##Recommended:
+Install grunt and grunt-cli globally
+1. `npm install -g grunt`
+2. `npm install -g grunt-cli`
 
 ##Steps to use:
 1. Clone repository.
