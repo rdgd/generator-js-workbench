@@ -12,6 +12,7 @@ The default [Grunt](http://gruntjs.com) command will do all the mentioned above 
 
 ##Recommended:
 Install grunt and grunt-cli globally
+
 1. `npm install -g grunt`
 2. `npm install -g grunt-cli`
 
