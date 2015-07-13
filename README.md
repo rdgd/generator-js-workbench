@@ -7,6 +7,8 @@ The default [Grunt](http://gruntjs.com) command will do all the mentioned above 
 
 ##Dependencies:
 1. [NPM (Node Package Manager)](https://docs.npmjs.com/getting-started/installing-node)
+2. [RubyGems (the Ruby package manager)](https://rubygems.org/pages/download)
+3. [Compass](http://compass-style.org/install/)
 
 ##Steps to use:
 1. Clone repository.
@@ -16,7 +18,7 @@ The default [Grunt](http://gruntjs.com) command will do all the mentioned above 
 
 `npm install` installs all of the Grunt task deps, and `grunt watch` will listen for any changes made to the files as defined in the Gruntfile.js. When issues are encountered by any of the tasks, a desktop notification will appear to alert you to that fact.
 
-If you want to change your project structure, you will need to adjust the Gruntfile.js accordingly to sync-up dir paths.
+If you want to change your project structure, you will need to adjust /Gruntfile.js and /dev/css/compass.rb accordingly to sync-up dir paths.
 
 The Grunt Plugins I leverage are:
 
