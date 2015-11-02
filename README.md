@@ -3,7 +3,7 @@ Boilerplate for crushing it, 2015.
 
 This is a boilerplate for utilizing Grunt to enforce my Javascript coding style rules, lint all Javascript any time a JS file is modified, and compile SASS files to minified CSS any time a .scss file is modified. 
 
-The default [Grunt](http://gruntjs.com) command will do all the mentioned above plus minify JS in a build folder with a date/time-stamped directory. This part still needs a bit of work.
+The default [Grunt](http://gruntjs.com) command will do all the mentioned above.
 
 ##Dependencies:
 1. [NPM (Node Package Manager)](https://docs.npmjs.com/getting-started/installing-node)
