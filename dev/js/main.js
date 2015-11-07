@@ -1,5 +1,8 @@
-function helloWorld () {
-  console.log('hello world');
+require('../css/sass/general.scss');
+var dep = require('./exampleDependency.js');
+
+function Example () {
+  this.dep = dep;
 }
 
-helloWorld();
+window.example = new Example();
