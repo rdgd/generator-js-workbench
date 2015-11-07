@@ -13,9 +13,9 @@ module.exports = function(grunt) {
     jscs: {
       src: "dev/**/*.js",
       options: {
-        esnext: false, // If you use ES6 http://jscs.info/overview.html#esnext
-        verbose: true, // If you need output with rule names http://jscs.info/overview.html#verbose
-        config: 'node_modules/jscs/jscs.json'
+        esnext: false,
+        verbose: true,
+        config: 'jscs.json' // Replace with whatever standards you wish to use. http://jscs.info/rules
       }
     },
     uglify: {
@@ -26,42 +26,53 @@ module.exports = function(grunt) {
       all: {
         files: [{
           expand: true,
-          cwd: 'dev/js',
+          cwd: 'dist',
           src: '**/*.js',
-          dest: 'assets/js'
+          dest: 'dist'
         }]
       }
     },
+    webpack: {
+      all: {
+        entry: "./dev/js/main.js",
+        output: {
+            path: "dist",
+            filename: "[name].min.js",
+        },
+        stats: {
+            colors: true,
+            modules: true,
+            reasons: true
+        },
+        storeStatsTo: "webpackStats",
+        failOnError: true,
+        keepalive: false,
+        module: {
+          loaders: [
+            {
+              test: /\.scss$/,
+              loaders: ["style", "css", "sass"]
+            }
+          ],
+        }
+      }
+    },
     watch: {
-      scripts: {
-        files: ['dev/**/*.js'],
-        tasks: ['jshint', 'jscs', 'uglify:all'],
+      all: {
+        files: ['dev/**/*.js', 'dev/css/sass/*.scss', 'dev/css/sass/**/*.scss'],
+        tasks: ['jshint', 'jscs', 'webpack:all', 'uglify:all'],
         options: {
           spawn: false,
         }
-      },
-      sass: {
-        files: ['dev/css/sass/*.scss', 'dev/css/sass/**/*.scss'],
-        tasks: ['compass']
-      }
-    },
-    compass: {                  // Task
-      dist: {                   // Target
-        options: {              // Target options
-          config: 'dev/css/config.rb',
-          environment: 'production'
-        } 
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-notify');
-  grunt.registerTask('default', ['jshint', 'jscs', 'uglify:all','compass']);
-  grunt.registerTask('scripts', 'watch:scripts');
-  grunt.registerTask('sass', 'watch:sass');
+  grunt.registerTask('default', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
 };
