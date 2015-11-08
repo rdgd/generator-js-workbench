@@ -5,7 +5,7 @@ This is a boilerplate which utilizes Grunt with a number of plugins to perform s
 
 ##Dependencies:
 1. [NPM (Node Package Manager)](https://docs.npmjs.com/getting-started/installing-node)
-2. [Yeoman] (http://yeoman.io/) - `npm install -g yo`
+2. [Yeoman](http://yeoman.io/) - `npm install -g yo`
 3. [Grunt](http://gruntjs.com) - `npm install -g grunt grunt-cli`
 
 ##Steps to use:
