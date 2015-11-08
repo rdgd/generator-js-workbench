@@ -67,7 +67,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
   copyStaticFiles: function () {
     var dirPath = '../static/';
     this.copy(dirPath + 'conf/jscs.json', 'jscs.json');
-    this.copy(dirPath + 'conf/.gitignore', '.gitignore');
+    this.copy(dirPath + 'conf/gitignore.txt', '.gitignore');
     this.copy(dirPath + 'js/main.js', 'dev/js/' + this.projectName + '.js');
     this.copy(dirPath + 'js/exampleDependency.js', 'dev/js/exampleDependency.js');
     this.copy(dirPath + 'sass/general.scss', 'dev/sass/general.scss');
