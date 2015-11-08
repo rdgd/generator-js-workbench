@@ -6,10 +6,10 @@
   "description": "A somewhat opinionated generator for developing and building linted, standardized, and bundled JS component parts with Grunt, Webpack, and SASS in an automated fashion.",
   "private": false,
   "license": "WTFPL",
-  "homepage": "https://github.com/rdgd/CIBP.git",
+  "homepage": "https://github.com/rdgd/generator-js-workbench.git",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rdgd/CIBP.git"
+    "url": "git+https://github.com/rdgd/generator-js-workbench.git"
   },
   "keywords": [
     "yeoman-generator"

@@ -1,6 +1,2 @@
-# Ignore sass-cache files
-*.sass-cache
-*.sass-cache/*
-
 #Ignore node modules
 node_modules/*
