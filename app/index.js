@@ -62,17 +62,18 @@ var jsWorkbenchGenerator = generators.Base.extend({
     }
   },
 
-  // Copying core files and stubs from generator source to new project
-  // Very stringy... better approach?
-  copyFiles: function () {
-    this.copy('_Gruntfile.js', 'Gruntfile.js');
-    this.copy('_jscs.json', 'jscs.json');
-    this.copy('._gitignore', '.gitignore');
-    this.copy('dev/js/main.js', 'dev/js/' + this.mainJS);
-    this.copy('dev/js/exampleDependency.js', 'dev/js/exampleDependency.js');
-    this.copy('dev/css/sass/general.scss', 'dev/css/sass/general.scss');
-    this.copy('dev/css/sass/particles/_general.scss', 'dev/css/sass/particles/_general.scss');
+  // A bit stringy... better approach?
+  copyStaticFiles: function () {
+    var dirPath = '../static/';
+    this.copy(dirPath + 'conf/jscs.json', 'jscs.json');
+    this.copy(dirPath + 'conf/.gitignore', '.gitignore');
+    this.copy(dirPath + 'js/main.js', 'dev/js/' + this.mainJS);
+    this.copy(dirPath + 'js/exampleDependency.js', 'dev/js/exampleDependency.js');
+    this.copy(dirPath + 'sass/general.scss', 'dev/sass/general.scss');
+    this.copy(dirPath + 'sass/particles/_general.scss', 'dev/sass/particles/_general.scss');
+  },
 
+  copyTemplates: function () {
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
