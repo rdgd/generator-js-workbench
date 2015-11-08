@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       options: {
         esnext: false,
         verbose: true,
-        config: 'jscs.json' // Replace with whatever standards you wish to use. http://jscs.info/rules
+        config: 'jscs.json' // See http://jscs.info/rules for options
       }
     },
     uglify: {
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
       all: {
         files: [{
           expand: true,
-          cwd: 'dist',
+          cwd: 'dist/src',
           src: '**/*.js',
-          dest: 'dist'
+          dest: 'dist/min'
         }]
       }
     },
@@ -36,13 +36,13 @@ module.exports = function(grunt) {
       all: {
         entry: "./dev/js/main.js",
         output: {
-            path: "dist",
-            filename: "[name].min.js",
+          path: "dist/src",
+          filename: "[name].js",
         },
         stats: {
-            colors: true,
-            modules: true,
-            reasons: true
+          colors: true,
+          modules: true,
+          reasons: true
         },
         storeStatsTo: "webpackStats",
         failOnError: true,
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
               test: /\.scss$/,
               loaders: ["style", "css", "sass"]
             }
-          ],
+          ]
         }
       }
     },

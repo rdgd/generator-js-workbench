@@ -1,0 +1,27 @@
+{
+  "name": "your-awesome-new-JS-component",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Your awesome new JS component.",
+  "main": "index.js",
+  "author": "You",
+  "license": "",
+  "homepage": "",
+  "devDependencies": {
+    "css-loader": "^0.22.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.8.0",
+    "grunt-notify": "^0.4.1",
+    "grunt-webpack": "^1.0.11",
+    "node-sass": "^3.4.1",
+    "sass-loader": "^3.1.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {}
+}
