@@ -9,7 +9,7 @@
   "homepage": "https://github.com/rdgd/generator-js-workbench.git",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rdgd/generator-js-workbench.git"
+    "url": "https://github.com/rdgd/generator-js-workbench.git"
   },
   "keywords": [
     "yeoman-generator"
