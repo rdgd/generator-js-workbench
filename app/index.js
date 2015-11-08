@@ -4,6 +4,7 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var chalk = require('chalk');
 var generators = require('yeoman-generator');
+var execSync = require('./execSync.js');
 
 var jsWorkbenchGenerator = generators.Base.extend({
   promptUser: function() {
@@ -41,7 +42,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
     // After prompt occurs, an object 'props' is passed to callback with user responses
     this.prompt(prompts, function (props) {
       this.npmProps = props;
-      this.mainJS = this.npmProps.projectName + '.js';
+      this.projectName = this.npmProps.projectName;
       done();
     }.bind(this));
   },
@@ -67,7 +68,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
     var dirPath = '../static/';
     this.copy(dirPath + 'conf/jscs.json', 'jscs.json');
     this.copy(dirPath + 'conf/.gitignore', '.gitignore');
-    this.copy(dirPath + 'js/main.js', 'dev/js/' + this.mainJS);
+    this.copy(dirPath + 'js/main.js', 'dev/js/' + this.projectName + '.js');
     this.copy(dirPath + 'js/exampleDependency.js', 'dev/js/exampleDependency.js');
     this.copy(dirPath + 'sass/general.scss', 'dev/sass/general.scss');
     this.copy(dirPath + 'sass/particles/_general.scss', 'dev/sass/particles/_general.scss');
@@ -83,17 +84,36 @@ var jsWorkbenchGenerator = generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('_Gruntfile.js'),
       this.destinationPath('Gruntfile.js'),
-      { mainJS: this.mainJS }
+      {
+        projectName: this.projectName,
+        mainJS: this.projectName + '.js'
+      }
+    )
+
+    this.fs.copyTpl(
+      this.templatePath('_example1.html'),
+      this.destinationPath('examples/example1.html'),
+      {
+        projectName: this.npmProps.projectName,
+        mainJS: this.projectName + '.js'
+      }
     )
   },
 
-  // Install Node Packages from copied package.json, then show thank you message
-  runNpm: function(){
-    var asciiArt = this.read('../thank-you-message.txt');
+  // Install Node Packages from copied package.json, build project, then show thank you message
+  runNpm: function () {
     this.npmInstall("", function () {
-      var thankYou = chalk.green('Thanks for using \n ' + chalk.blue(asciiArt));
+      console.log(chalk.green('Dependencies installed successfully '));
+      execSync('grunt');
+      console.log(chalk.green('Example project built successfully '));
+      thankUser.call(this);
+    }.bind(this));
+
+    function thankUser () {
+      var asciiArt = this.read('../thank-you-message.txt');
+      var thankYou = 'Thanks for using \n ' + chalk.blue(asciiArt);
       console.log(thankYou);
-    });
+    }
   }
 });
 

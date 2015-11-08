@@ -1,4 +1,4 @@
-require('../css/sass/general.scss');
+require('../sass/general.scss');
 var dep = require('./exampleDependency.js');
 
 function Example () {

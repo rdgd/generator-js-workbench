@@ -24,12 +24,12 @@ module.exports = function(grunt) {
         preserveComments: false
       },
       all: {
-        files: [{
-          expand: true,
-          cwd: 'dist/src',
-          src: '**/*.js',
-          dest: 'dist/min'
-        }]
+        files: grunt.file.expandMapping(['dist/src/*.js'], 'dist/min/', {
+		    	flatten: true,
+		        rename: function(destBase, destPath) {
+		          return destBase + destPath.replace('.js', '.min.js');
+		        }
+		    })
       }
     },
     webpack: {
