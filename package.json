@@ -1,28 +1,25 @@
 {
   "name": "generator-js-workbench",
   "version": "1.0.0",
+  "author": "Ryan Gray",
+  "email": "ryan.is.gray@gmail.com",
+  "description": "A somewhat opinionated generator for developing and building linted, standardized, and bundled JS component parts with Grunt, Webpack, and SASS in an automated fashion.",
   "private": false,
-  "description": "Generator for developing and building linted, standardized, and bundled JS component parts with Grunt, Webpack, and SASS in an automated fashion.",
-  "keywords": [
-    "yeoman-generator"
-  ],
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "license": "WTFPL",
+  "homepage": "https://github.com/rdgd/CIBP.git",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rdgd/CIBP.git"
   },
+  "keywords": [
+    "yeoman-generator"
+  ],
   "files": [
     "app",
     "Gruntfile.js",
     "jscs.json",
     ".gitignore"
   ],
-  "author": "Ryan Gray",
-  "license": "ISC",
-  "homepage": "https://github.com/rdgd/CIBP.git",
   "devDependencies": {},
   "dependencies": {
     "chalk": "^1.1.1",

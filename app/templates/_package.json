@@ -1,12 +1,10 @@
 {
-  "name": "your-awesome-new-JS",
-  "version": "0.0.1",
-  "private": false,
-  "description": "Your awesome new JS.",
-  "main": "index.js",
-  "author": "You",
-  "license": "",
-  "homepage": "",
+  "name": "<%= projectName %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
+  "author": "<%= author %>",
+  "license": "<%= license %>",
+  "homepage": "<%= homepage %>",
   "devDependencies": {
     "css-loader": "^0.22.0",
     "grunt": "^0.4.5",
