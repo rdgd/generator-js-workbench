@@ -1,9 +1,7 @@
 # JS Workbench
-Yeoman generator for spinning up JS components quickly. 
+Yeoman generator for spinning up client-side JS projects quickly.
 
-This is a boilerplate for utilizing Grunt to enforce my Javascript coding style rules, lint all Javascript any time a JS file is modified, and compile SASS files to minified CSS any time a .scss file is modified. 
-
-The default [Grunt](http://gruntjs.com) command will do all the mentioned above.
+This is a boilerplate which utilizes Grunt with a number of plugins to perform static analysis, handle development asset compilation/bundling/building, provide testing tools, and altogether make development faster, easier, better, and more fun.
 
 ##Dependencies:
 1. [NPM (Node Package Manager)](https://docs.npmjs.com/getting-started/installing-node)
