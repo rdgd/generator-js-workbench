@@ -1,6 +1,6 @@
 {
   "name": "generator-js-workbench",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Ryan Gray",
   "email": "ryan.is.gray@gmail.com",
   "description": "A somewhat opinionated generator for developing and building linted, standardized, and bundled JS component parts with Grunt, Webpack, and SASS in an automated fashion.",
