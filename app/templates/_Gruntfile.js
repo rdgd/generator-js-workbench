@@ -34,10 +34,10 @@ module.exports = function(grunt) {
     },
     webpack: {
       all: {
-        entry: "./dev/js/main.js",
+        entry: "./dev/js/<%= mainJS %>",
         output: {
           path: "dist/src",
-          filename: "[name].js",
+          filename: "<%= mainJS %>",
         },
         stats: {
           colors: true,
