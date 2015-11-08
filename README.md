@@ -1,5 +1,5 @@
-# CIBP
-Boilerplate for crushing it, 2015.
+# JS Workbench
+Yeoman generator for spinning up JS components quickly. 
 
 This is a boilerplate for utilizing Grunt to enforce my Javascript coding style rules, lint all Javascript any time a JS file is modified, and compile SASS files to minified CSS any time a .scss file is modified. 
 
@@ -7,24 +7,16 @@ The default [Grunt](http://gruntjs.com) command will do all the mentioned above.
 
 ##Dependencies:
 1. [NPM (Node Package Manager)](https://docs.npmjs.com/getting-started/installing-node)
-2. [RubyGems (the Ruby package manager)](https://rubygems.org/pages/download)
-3. [Compass](http://compass-style.org/install/)
-
-##Recommended:
-Install grunt and grunt-cli globally
-
-1. `npm install -g grunt`
-2. `npm install -g grunt-cli`
+2. [Yeoman] (http://yeoman.io/) - `npm install -g yo`
+3. [Grunt](http://gruntjs.com) - `npm install -g grunt grunt-cli`
 
 ##Steps to use:
-1. Clone repository.
-2. In project root `npm install`. 
-3. In project root `grunt watch`.
-4. That's all.
+1. `yo js-workbench`
+2. `grunt watch`
 
-`npm install` installs all of the Grunt task deps, and `grunt watch` will listen for any changes made to the files as defined in the Gruntfile.js. When issues are encountered by any of the tasks, a desktop notification will appear to alert you to that fact.
+`grunt watch` will listen for any changes made to the files as defined in the Gruntfile.js. When issues are encountered by any of the tasks, a desktop notification will appear to alert you to that fact.
 
-If you want to change your project structure, you will need to adjust /Gruntfile.js and /dev/css/compass.rb accordingly to sync-up dir paths.
+If you want to change your project structure, you will need to adjust /Gruntfile.js accordingly to sync-up dir paths.
 
 The Grunt Plugins I leverage are:
 
@@ -34,3 +26,5 @@ The Grunt Plugins I leverage are:
 4. [Contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
 5. [jscs](https://github.com/jscs-dev/grunt-jscs)
 6. [notify](https://github.com/dylang/grunt-notify)
+7. [webpack](https://github.com/webpack/grunt-webpack)
+8. [karma](https://github.com/karma-runner/grunt-karma)
