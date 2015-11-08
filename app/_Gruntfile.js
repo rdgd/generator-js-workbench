@@ -73,6 +73,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-notify');
   grunt.registerTask('default', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
 };
