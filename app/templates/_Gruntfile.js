@@ -24,11 +24,13 @@ module.exports = function(grunt) {
         preserveComments: false
       },
       all: {
-        files: grunt.file.expandMapping(['dist/src/*.js'], 'dist/min/', {
+        files: grunt.file.expandMapping(['dist/*.js'], 'dist/', {
 		    	flatten: true,
-		        rename: function(destBase, destPath) {
-		          return destBase + destPath.replace('.js', '.min.js');
-		        }
+          rename: function(destBase, destPath) {
+            var filePath = destBase + destPath;
+            if (destPath.indexOf('.min.js') !== -1) { return filePath; }
+	          return filePath.replace('.js', '.min.js');
+	        }
 		    })
       }
     },
@@ -36,7 +38,7 @@ module.exports = function(grunt) {
       all: {
         entry: "./dev/js/<%= mainJS %>",
         output: {
-          path: "dist/src",
+          path: "dist/",
           filename: "<%= mainJS %>",
         },
         stats: {
@@ -52,6 +54,14 @@ module.exports = function(grunt) {
             {
               test: /\.scss$/,
               loaders: ["style", "css", "sass"]
+            },
+            {
+              test: /\.eot$|\.ttf$|\.woff$|\.woff2$/,
+              loader: "file-loader"
+            },
+            {
+              test: /\.html$/,
+              loader: "html-loader"
             }
           ]
         }
