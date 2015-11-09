@@ -9,8 +9,9 @@ This is a boilerplate which utilizes Grunt with a number of plugins to perform s
 3. [Grunt](http://gruntjs.com) - `npm install -g grunt grunt-cli`
 
 ##Steps to use:
-1. `yo js-workbench`
-2. `grunt watch`
+1. `npm install -g generator-js-workbench`
+2. `yo js-workbench`
+3. `grunt watch`
 
 `grunt watch` will listen for any changes made to the files as defined in the Gruntfile.js. When issues are encountered by any of the tasks, a desktop notification will appear to alert you to that fact.
 
