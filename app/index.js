@@ -49,7 +49,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
 
   // Creating folders that won't be created during file copy
   scaffoldFolders: function() {
-    var dirPaths = ['dist', 'dev/tests', 'dev/html'];
+    var dirPaths = ['dist', 'dev/html'];
 
     for (var i = 0; i < dirPaths.length; i++) {
       var pathToDir = dirPaths[i];
@@ -68,8 +68,11 @@ var jsWorkbenchGenerator = generators.Base.extend({
     var dirPath = '../static/';
     this.copy(dirPath + 'conf/jscs.json', 'jscs.json');
     this.copy(dirPath + 'conf/gitignore.txt', '.gitignore');
+    this.copy(dirPath + 'conf/karma.conf.js', 'karma.conf.js');
     this.copy(dirPath + 'js/main.js', 'dev/js/' + this.projectName + '.js');
     this.copy(dirPath + 'js/exampleDependency.js', 'dev/js/exampleDependency.js');
+    this.copy(dirPath + 'js/unit-test-1.js', 'dev/tests/unit/unit-test-1.js');
+    this.copy(dirPath + 'js/acceptance-test-1.js', 'dev/tests/acceptance/acceptance-test-1.js');
     this.copy(dirPath + 'sass/general.scss', 'dev/sass/general.scss');
     this.copy(dirPath + 'sass/particles/_general.scss', 'dev/sass/particles/_general.scss');
   },
@@ -103,7 +106,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
   // Install Node Packages from copied package.json, build project, then show thank you message
   runNpm: function () {
     this.npmInstall("", function () {
-      var pathToGrunt = path.resolve('./node_modules/grunt-cli/bin/grunt');
+      var pathToGrunt = path.resolve('./node_modules/grunt-cli/bin/grunt build');
       console.log(chalk.green('Dependencies installed successfully'));
       execSync(pathToGrunt);
       console.log(chalk.green('Example project built successfully'));

@@ -67,10 +67,22 @@ module.exports = function(grunt) {
         }
       }
     },
+    karma: {
+      acceptance: {
+        configFile: 'karma.conf.js',
+        browsers: ['Chrome', 'Firefox'],
+        files: [{ src: './dist/*.js' }, { src: './dev/tests/acceptance/*.js' }]
+      },
+      unit: {
+        configFile: 'karma.conf.js',
+        browsers: ['PhantomJS'],
+        files: [{ src: './dev/tests/unit/*.js' }]
+      }
+    },
     watch: {
       all: {
         files: ['dev/**/*.js', 'dev/sass/*.scss', 'dev/sass/**/*.scss', 'dev/html/*.html', 'dev/html/**/*.html'],
-        tasks: ['jshint', 'jscs', 'webpack:all', 'uglify:all'],
+        tasks: ['jshint', 'jscs', 'webpack:all', 'uglify:all', 'karma:unit'],
         options: {
           spawn: false,
         }
@@ -85,5 +97,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-notify');
-  grunt.registerTask('default', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
+  grunt.registerTask('default', ['jshint', 'jscs', 'webpack:all', 'uglify:all', 'karma:unit', 'karma:acceptance']);
+  grunt.registerTask('build', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
+  grunt.registerTask('qa', ['karma:unit', 'karma:acceptance']);
 };
