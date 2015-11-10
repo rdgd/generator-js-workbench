@@ -69,7 +69,7 @@ module.exports = function(grunt) {
     },
     watch: {
       all: {
-        files: ['dev/**/*.js', 'dev/sass/*.scss', 'dev/sass/**/*.scss'],
+        files: ['dev/**/*.js', 'dev/sass/*.scss', 'dev/sass/**/*.scss', 'dev/html/*.html', 'dev/html/**/*.html'],
         tasks: ['jshint', 'jscs', 'webpack:all', 'uglify:all'],
         options: {
           spawn: false,

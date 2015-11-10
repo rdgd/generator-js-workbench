@@ -49,7 +49,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
 
   // Creating folders that won't be created during file copy
   scaffoldFolders: function() {
-    var dirPaths = ['dist', 'dev/tests'];
+    var dirPaths = ['dist', 'dev/tests', 'dev/html'];
 
     for (var i = 0; i < dirPaths.length; i++) {
       var pathToDir = dirPaths[i];
@@ -103,9 +103,10 @@ var jsWorkbenchGenerator = generators.Base.extend({
   // Install Node Packages from copied package.json, build project, then show thank you message
   runNpm: function () {
     this.npmInstall("", function () {
-      console.log(chalk.green('Dependencies installed successfully '));
-      execSync('grunt');
-      console.log(chalk.green('Example project built successfully '));
+      var pathToGrunt = path.resolve('./node_modules/grunt-cli/bin/grunt');
+      console.log(chalk.green('Dependencies installed successfully'));
+      execSync(pathToGrunt);
+      console.log(chalk.green('Example project built successfully'));
       thankUser.call(this);
     }.bind(this));
 
