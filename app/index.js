@@ -70,6 +70,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
     this.copy(dirPath + 'conf/gitignore.txt', '.gitignore');
     this.copy(dirPath + 'conf/karma.conf.js', 'karma.conf.js');
     this.copy(dirPath + 'js/main.js', 'dev/js/' + this.projectName + '.js');
+    this.copy(dirPath + 'js/exampleModule.js', 'dev/js/exampleModule.js');
     this.copy(dirPath + 'js/exampleDependency.js', 'dev/js/exampleDependency.js');
     this.copy(dirPath + 'js/unit-test-1.js', 'dev/tests/unit/unit-test-1.js');
     this.copy(dirPath + 'js/acceptance-test-1.js', 'dev/tests/acceptance/acceptance-test-1.js');
