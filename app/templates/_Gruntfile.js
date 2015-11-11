@@ -76,7 +76,8 @@ module.exports = function(grunt) {
       unit: {
         configFile: 'karma.conf.js',
         browsers: ['PhantomJS'],
-        files: [{ src: './dev/tests/unit/*.js' }]
+        exclude: ['./dev/js/<%= mainJS %>'],
+        files: [{ src: './node_modules/phantomjs-polyfill/bind-polyfill.js' }, { src: './dev/js/*.js' }, { src: './dev/tests/unit/*.js' }]
       }
     },
     watch: {
@@ -100,4 +101,5 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'jscs', 'webpack:all', 'uglify:all', 'karma:unit', 'karma:acceptance']);
   grunt.registerTask('build', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
   grunt.registerTask('qa', ['karma:unit', 'karma:acceptance']);
+  grunt.registerTask('unit', ['karma:unit']);
 };

@@ -1,8 +1,4 @@
 require('../sass/general.scss');
-var dep = require('./exampleDependency.js');
+var Ex = require('./exampleModule.js');
 
-function Example () {
-  this.dep = dep;
-}
-
-window.example = new Example();
+window.example = new Ex();
