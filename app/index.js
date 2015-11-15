@@ -7,6 +7,7 @@ var generators = require('yeoman-generator');
 var execSync = require('./execSync.js');
 
 var jsWorkbenchGenerator = generators.Base.extend({
+  // Defining the prompts we need to get information from our user, and then prompting them
   promptUser: function() {
     var done = this.async();
     var prompts = [
@@ -78,6 +79,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
     this.copy(dirPath + 'sass/particles/_general.scss', 'dev/sass/particles/_general.scss');
   },
 
+  // Templating NPM manifest, Gruntfile, and example HTML page
   copyTemplates: function () {
     this.fs.copyTpl(
       this.templatePath('_package.json'),

@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    // Linting Javascript files
     jshint: {
       files: ['Gruntfile.js', 'dev/js/**/*.js'],
       options: {
@@ -10,6 +11,7 @@ module.exports = function(grunt) {
         }
       }
     },
+    // Enforcing coding style standards for Javascript
     jscs: {
       src: "dev/**/*.js",
       options: {
@@ -18,6 +20,7 @@ module.exports = function(grunt) {
         config: 'jscs.json' // See http://jscs.info/rules for options
       }
     },
+    // Minifying built JS to seperate file
     uglify: {
       options: {
         screwIE8: true,
@@ -34,6 +37,7 @@ module.exports = function(grunt) {
 		    })
       }
     },
+    // Bundling JS and CSS into one JS file
     webpack: {
       all: {
         entry: "./dev/js/<%= mainJS %>",
@@ -67,6 +71,7 @@ module.exports = function(grunt) {
         }
       }
     },
+    // Test runner for use with Jasmine
     karma: {
       acceptance: {
         configFile: 'karma.conf.js',
@@ -80,12 +85,27 @@ module.exports = function(grunt) {
         files: [{ src: './node_modules/phantomjs-polyfill/bind-polyfill.js' }, { src: './dev/js/*.js' }, { src: './dev/tests/unit/*.js' }]
       }
     },
+    // Listening for changes to files
     watch: {
       all: {
         files: ['dev/**/*.js', 'dev/sass/*.scss', 'dev/sass/**/*.scss', 'dev/html/*.html', 'dev/html/**/*.html'],
         tasks: ['jshint', 'jscs', 'webpack:all', 'uglify:all', 'karma:unit'],
         options: {
           spawn: false,
+        }
+      },
+      acceptance: {
+        files: ['dev/tests/acceptance/*.js'],
+        tasks: ['karma:acceptance'],
+        options: {
+          spawn: false
+        }
+      },
+      unit: {
+        files: ['dev/tests/unit/*.js'],
+        tasks: ['karma:unit'],
+        options: {
+          spawn: false
         }
       }
     }
@@ -102,4 +122,5 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
   grunt.registerTask('qa', ['karma:unit', 'karma:acceptance']);
   grunt.registerTask('unit', ['karma:unit']);
+  grunt.registerTask('accept', ['karma:acceptance']);
 };
