@@ -5,6 +5,7 @@ var mkdirp = require('mkdirp');
 var chalk = require('chalk');
 var generators = require('yeoman-generator');
 var execSync = require('./execSync.js');
+var fs = require('fs');
 
 var jsWorkbenchGenerator = generators.Base.extend({
   // Defining the prompts we need to get information from our user, and then prompting them
@@ -45,6 +46,37 @@ var jsWorkbenchGenerator = generators.Base.extend({
       this.npmProps = props;
       this.projectName = this.npmProps.projectName;
       done();
+    }.bind(this));
+  },
+
+  /*
+    Reading the file system and grabbing our options from there, since the options
+    are populated by a third-party repo is definitely the right way to do this.
+  */
+  selectCodingStyleStandard: function () {
+    var done = this.async();
+    var jscsDir = path.resolve(this.sourceRoot() + '../../../node_modules/jscs/presets');
+
+    // Read different coding standard preset file options from the generator's node_modules
+    fs.readdir(jscsDir, function (err, fileList) {
+      var prompts = [{
+        type: 'list',
+        name: 'JSCS',
+        message: 'Which coding style standard would you like to use?',
+        choices: []
+      }];
+
+      // Checking each file for .json extension and if it exists treating it as an option
+      fileList.forEach(function (file) {
+        if (file.indexOf('.json') !== -1) {
+          prompts[0].choices.push(file.split('.json')[0]);
+        }
+      });
+
+      this.prompt(prompts, function (props) {
+        this.JSCS = props.JSCS;
+        done();
+      }.bind(this));
     }.bind(this));
   },
 
@@ -92,7 +124,8 @@ var jsWorkbenchGenerator = generators.Base.extend({
       this.destinationPath('Gruntfile.js'),
       {
         projectName: this.projectName,
-        mainJS: this.projectName + '.js'
+        mainJS: this.projectName + '.js',
+        jscs: this.JSCS + '.json'
       }
     )
 
@@ -109,7 +142,7 @@ var jsWorkbenchGenerator = generators.Base.extend({
   // Install Node Packages from copied package.json, build project, then show thank you message
   runNpm: function () {
     this.npmInstall("", function () {
-      var pathToGrunt = path.resolve('./node_modules/grunt-cli/bin/grunt build');
+      var pathToGrunt = path.resolve('./node_modules/grunt-cli/bin/grunt bundle');
       console.log(chalk.green('Dependencies installed successfully'));
       execSync(pathToGrunt);
       console.log(chalk.green('Example project built successfully'));

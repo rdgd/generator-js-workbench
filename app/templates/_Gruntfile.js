@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       options: {
         esnext: false,
         verbose: true,
-        config: 'jscs.json' // See http://jscs.info/rules for options
+        config: 'node_modules/jscs/presets/<%= jscs %>' // See http://jscs.info/rules for options
       }
     },
     // Minifying built JS to seperate file
@@ -120,6 +120,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-notify');
   grunt.registerTask('default', ['jshint', 'jscs', 'webpack:all', 'uglify:all', 'karma:unit', 'karma:acceptance']);
   grunt.registerTask('build', ['jshint', 'jscs', 'webpack:all', 'uglify:all']);
+  grunt.registerTask('bundle', ['webpack:all', 'uglify:all']);
   grunt.registerTask('qa', ['karma:unit', 'karma:acceptance']);
   grunt.registerTask('unit', ['karma:unit']);
   grunt.registerTask('accept', ['karma:acceptance']);
